@@ -66,6 +66,7 @@ while True:
 
             elif action_for_metods == '4':
                 while True:
+                    print(f'Current list before removing:\n{rand_lst}')
                     obj = input('Enter the item you want to remove (if there are 2 or more, are removed first): ')
                     try:
                         obj_num = int(obj)
@@ -84,7 +85,7 @@ while True:
                     #     #     rand_lst.remove(obj)
                     else:
                         print('this item is not in the list')
-                    print('New list:\n', rand_lst)
+                    print('New list after removing:\n', rand_lst)
                     begin = input('enter 1 - use this method 2 - back to method selection\n->')
                     if begin == '1':
                         continue
@@ -93,11 +94,15 @@ while True:
 
             elif action_for_metods == '5':
                 while True:
+                    print(f'Current list:\n{rand_lst}')
                     obj = int(input('Enter the index of item you want to remove (if the index is not in the list'
                                     ', are removed last item): '))
-                    print(f'You removed {rand_lst[obj]} ')
-                    rand_lst.pop(obj)
 
+                    if obj >= len(rand_lst):
+                        print('list index out of range!!!')
+                    else:
+                        print(f'You removed {rand_lst[obj]} ')
+                        rand_lst.pop(obj)
                     print('New list:\n', rand_lst)
                     begin = input('enter 1 - use this method 2 - back to method selection\n->')
                     if begin == '1':
