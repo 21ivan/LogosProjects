@@ -1,9 +1,24 @@
 def func_for_dct(num):
     dct = {}
     for i in range(0, num):
-        key = input(f'Enter {i + 1} key: ')
-        value = input(f'Enter {i + 1} value: ')
-        dct[key] = value
+        while True:
+            key = input(f'Enter {i + 1} key: ')
+            if key in dct:
+                print("This key is already in dict")
+                continue
+            elif key.isnumeric():
+                int_key = int(key)
+                if int_key in dct:
+                    print("This key is already in dict")
+                    continue
+                else:
+                    value = input(f'Enter {i + 1} value: ')
+                    dct[int_key] = value
+            else:
+                value = input(f'Enter {i + 1} value: ')
+                dct[key] = value
+            break
+
     return dct
 
 
