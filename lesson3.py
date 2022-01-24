@@ -47,13 +47,27 @@ import sys
 # print(next(obj))
 
 
-def number(bus_stops):
-    count = 0
-    for i in range(len(bus_stops)):
-        subtraction = bus_stops[i][0] - bus_stops[i][1]
-        count += subtraction
-    return count
+# def number(bus_stops):
+#     count = 0
+#     for i in range(len(bus_stops)):
+#         subtraction = bus_stops[i][0] - bus_stops[i][1]
+#         count += subtraction
+#     return count
+#
+#
+# num = number([[2, 3], [20, 10]])
+# print(num)
+
+def my_2_func_for_list(sm_num):
+    dct_in_func = {}
+    lst_for_func = []
+    for i in range(0, sm_num):
+        # lst_for_func = []
+        lst_for_func.append(input("Enter key and value pair: ").split(" "))
+        # for item in range(len(lst_for_func)):
+        dct_in_func = {key: value for key, value in lst_for_func}
+    return dct_in_func
 
 
-num = number([[2, 3], [20, 10]])
-print(num)
+my_2dict = my_2_func_for_list(int(input("Enter a number: ")))
+print(my_2dict)

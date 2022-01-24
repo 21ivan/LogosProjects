@@ -13,7 +13,12 @@ def func_for_dct(num):
                     continue
                 else:
                     value = input(f'Enter {i + 1} value: ')
-                    dct[int_key] = value
+                    if value.isnumeric():
+                        int_value = int(value)
+                        dct[int_key] = int_value
+                    else:
+                        dct[int_key] = value
+
             else:
                 value = input(f'Enter {i + 1} value: ')
                 dct[key] = value
