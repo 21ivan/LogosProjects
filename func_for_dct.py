@@ -1,10 +1,11 @@
-def func_for_dct(num: int):
+def func_for_dct(num):
     dct = {}
     for i in range(0, num):
-        key = int(input('Enter key: '))
-        value = input('Enter value: ')
+        key = input(f'Enter {i + 1} key: ')
+        value = input(f'Enter {i + 1} value: ')
         dct[key] = value
     return dct
 
 
-print(func_for_dct(5))
+num = int(input('Enter the count of elements: '))
+print(func_for_dct(num))
