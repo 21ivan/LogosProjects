@@ -1,5 +1,8 @@
+dct = {}
+
+
 def func_for_dct(num):
-    dct = {}
+    global dct
     for i in range(0, num):
         while True:
             key = input(f'Enter {i + 1} key: ')
@@ -28,4 +31,8 @@ def func_for_dct(num):
 
 
 num = int(input('Enter the count of elements: '))
-print(func_for_dct(num))
+func_for_dct(num)
+
+with open('My_dict.txt', 'w') as f:
+    for item in dct:
+        f.write(f'{item} = {dct.get(item)}\n')
