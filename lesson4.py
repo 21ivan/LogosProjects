@@ -39,21 +39,26 @@
 
 
 ####Decorator####
-
+# import functools
+#
+#
 # def deco():
 #     def main_func(func):
 #         print('after main_func')
+#         @functools.wraps(func)
 #         def wrapper():
 #             print('in wrapper')
 #             return func()
 #             print('after func')
 #         return wrapper
 #
-# @main_func
+# @deco()
 # def another_func(name):
 #     print(f'my name is {name}')
 #
 # another_func('dsfsdgs')
+# #
 #
-
-
+#
+with open("my_file.txt", 'w') as f:
+    f.write()

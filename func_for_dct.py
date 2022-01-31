@@ -33,6 +33,6 @@ def func_for_dct(num):
 num = int(input('Enter the count of elements: '))
 func_for_dct(num)
 
-with open('My_dict.txt', 'w') as f:
+with open('My_dict.txt', 'a') as f:
     for item in dct:
         f.write(f'{item} = {dct.get(item)}\n')
