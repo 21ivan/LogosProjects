@@ -75,3 +75,46 @@ obj = Dct(lst)
 print(obj.func_for_text('my_file.txt'))
 
 print(obj.dct)
+
+
+#########
+# class Color:
+#     red = 0
+#     green = 0
+#     blue = 0
+#
+#     def __init__(self, red, green, blue):
+#         self.red = red
+#         self.green = green
+#         self.blue = blue
+#
+#     def toHex(self):
+#         return '#%02x%02x%02x' % (red, green, blue)
+#
+#
+# class ColorAlpha(Color):
+#     alpha = 1
+#
+#     def __init__(self, red, green, blue, alpha):
+#         self.red = red
+#         self.green = green
+#         self.blue = blue
+#         self.alpha = alpha
+#
+# gray = Color(80, 80, 80)
+
+# class Smartphone:
+#     def __init__(self, model = 'Unknown', storage_size = 'Unknown', battery = 'Unknown'):
+#         self.model = model
+#         self.storage_size = storage_size
+#         self.battery = battery
+#
+#     def info(self):
+#         print(f'{self.model}\n{self.storage_size}\n{self.battery} ')
+#
+#
+#
+# iphone = Smartphone('Iphone', 64, 3200)
+# samsung = Smartphone('Samsung', 128, 6400)
+# iphone.info()
+# samsung.info()
