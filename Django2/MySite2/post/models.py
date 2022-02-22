@@ -1,14 +1,12 @@
 from django.db import models
 
 
+# Create your models here.
 class Post(models.Model):
-    title = models.CharField(max_length=70)
+    title = models.CharField(max_length=75)
     content = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
     update = models.DateTimeField(auto_now=True)
-
-    def get_absolute_url(self):
-        return f'/posts/detail/{self.id}'
 
     def __str__(self):
         return self.title

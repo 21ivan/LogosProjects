@@ -1,0 +1,13 @@
+{% extends 'post/base.html' %}
+
+{% block content %}
+    <div class="post">
+        {% if object.timestamp %}
+            <div class="date">
+                {{ object.timestamp }}
+            </div>
+            {% endif %}
+            <h1>{{ object.title }}</h1>
+            <p>{{ object.content|linebreaksbr }}</p>
+    </div>
+{% endblock %}
