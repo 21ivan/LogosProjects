@@ -1,17 +1,23 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.utils import timezone
 from post.models import Post
 from post.forms import PostForm
+from django.contrib import messages
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 
-def home_page(request):
+def post_list(request):
     posts = Post.objects.all()
+    paginator = Paginator(posts, 3)
+    page_request_var = 'page'
+    page = request.GET.get(page_request_var)
+
     context = {
         'title': 'Post list',
         'object_list': posts
     }
-    return render(request, 'post/home_page.html', context)
+    return render(request, 'post/post_list.html', context)
 
 
 def post_create(request):
@@ -20,6 +26,7 @@ def post_create(request):
     if form.is_valid():
         instance = form.save(commit=False)
         instance.save()
+        messages.success(request, "Post created!!!")
         return HttpResponseRedirect(instance.get_absolute_url())
 
     context = {
@@ -36,6 +43,7 @@ def post_update(request, id):
     if form.is_valid():
         instance = form.save(commit=False)
         instance.save()
+        messages.success(request, "<a href = '#'>Post created!!!</a> ", extra_tags='safe_html')
         return HttpResponseRedirect(instance.get_absolute_url())
 
     context = {
@@ -45,8 +53,10 @@ def post_update(request, id):
     return render(request, 'post/post_create.html', context)
 
 
-def post_delete(request):
-    return HttpResponse('<h1>post delete</h1>')
+def post_delete(request, id):
+    instance = get_object_or_404(Post, id=id)
+    instance.delete()
+    return redirect('post:post_list')
 
 
 def post_detail(request, id):

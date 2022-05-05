@@ -1,9 +1,11 @@
 {% extends 'post/base.html' %}
 
 {% block content %}
-    <form action="" method="POST">
-        {{ form.as_p }}
-        {% csrf_token %}
-        <input type="submit" value="Create post!">
-    </form>
+    <div class="col-sm-6 col-sm-offset-3">
+        <form action="" method="POST">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <input type="submit" class="btn btn-primary" value="Create post!">
+        </form>
+    </div>
 {% endblock %}
