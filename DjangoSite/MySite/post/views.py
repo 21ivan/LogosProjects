@@ -12,16 +12,22 @@ def post_list(request):
     paginator = Paginator(posts, 3)
     page_request_var = 'page'
     page = request.GET.get(page_request_var)
-
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
     context = {
         'title': 'Post list',
-        'object_list': posts
+        'object_list': posts,
+        'page_request_var': page_request_var
     }
     return render(request, 'post/post_list.html', context)
 
 
 def post_create(request):
-    form = PostForm(request.POST or None)
+    form = PostForm(request.POST or None, request.FILES or None)
 
     if form.is_valid():
         instance = form.save(commit=False)
@@ -38,7 +44,9 @@ def post_create(request):
 
 def post_update(request, id):
     instance = get_object_or_404(Post, id=id)
-    form = PostForm(request.POST or None, instance=instance)
+    form = PostForm(request.POST or None,
+                    request.FILES or None,
+                    instance=instance)
 
     if form.is_valid():
         instance = form.save(commit=False)
